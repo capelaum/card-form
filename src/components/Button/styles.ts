@@ -16,16 +16,19 @@ export const ButtonStyled = styled('button', {
   color: '$white',
   backgroundColor: '$violet9',
 
-  '&:hover': {
-    filter: 'brightness(1.1)',
+  transition: '$fast',
+
+  '&:hover:not(:disabled)': {
+    opacity: 0.95,
   },
 
   '&:disabled': {
     cursor: 'not-allowed',
-    filter: 'brightness(0.5)',
+    opacity: 0.5,
   },
 
   '&:focus': {
     outline: '2px solid $violet3',
+    outlineOffset: '2px',
   },
 })

@@ -46,11 +46,7 @@ export default function Home() {
               </DateInputs>
             </DateField>
 
-            <TextInput
-              label="CVC"
-              id="cvc"
-              placeholder="e.g. 1234 5678 9123 0000"
-            />
+            <TextInput label="CVC" id="cvc" placeholder="e.g. 123" />
           </FormRow>
 
           <Button type="submit">Confirm</Button>

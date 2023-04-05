@@ -22,13 +22,13 @@ export const FormWrapper = styled('form', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  gap: '$6',
+  gap: '$5',
   margin: '$10 $8',
 
   maxWidth: '400px',
 
   button: {
-    marginTop: '$4',
+    marginTop: '$3',
   },
 })
 

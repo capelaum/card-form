@@ -25,7 +25,7 @@ export const Input = styled('input', {
   backgroundColor: 'transparent',
   border: '1px solid $gray1',
 
-  '&:focus': { border: '1px solid $violet3' },
+  '&:focus': { border: '1px solid $violet3', outline: 'none' },
   '&::selection': {
     border: '1px solid $violet3',
     backgroundColor: '$violet9',
@@ -49,7 +49,7 @@ export const Input = styled('input', {
 })
 
 export const ErrorMessage = styled('span', {
-  fontSize: '$sm',
+  fontSize: '$xs',
   lineHeight: '$short',
   color: '$red',
 })
