@@ -9,15 +9,20 @@ export const { styled, getCssText, keyframes, css, globalCss } = createStitches(
 
         red: 'hsl(0, 100%, 66%)',
 
+        gray1: 'hsl(0, 0%, 87%)',
+        gray2: 'hsl(250, 0%, 90%)',
+        gray3: 'hsl(262, 5%, 71%)',
+
         violet1: 'hsl(270, 3%, 87%)',
         violet2: 'hsl(279, 6%, 55%)',
+        violet3: 'hsl(250, 28%, 48%)',
         violet9: 'hsl(278, 68%, 11%)',
 
         'gradient-violet': `linear-gradient(90deg, hsl(249, 99%, 64%) 0%, hsl(278, 94%, 30%) 100%)`,
       },
 
       fonts: {
-        default: 'Space Grotesk, sans-serif',
+        default: "'Space Grotesk', sans-serif",
       },
 
       space: {
