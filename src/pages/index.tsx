@@ -1,17 +1,19 @@
-import { BgDesktop } from '@/assets'
+import { BgDesktop, BgMobile, CardBack, CardFront } from '@/assets'
 import { Button } from '@/components/Button'
 import { Label } from '@/components/Label'
 import { TextInput } from '@/components/TextInput'
 import {
+  BgImage,
+  BgMobileImage,
+  CardBackImage,
+  CardFrontImage,
   DateField,
   DateInputs,
   FormRow,
   FormWrapper,
   HomeWrapper,
-  ImageWrapper,
 } from '@/styles/home'
 import Head from 'next/head'
-import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -20,9 +22,22 @@ export default function Home() {
         <title>Card Form | Frontend Mentor</title>
       </Head>
       <HomeWrapper>
-        <ImageWrapper>
-          <Image src={BgDesktop} alt="Background with a violet gray gradient" />
-        </ImageWrapper>
+        <BgImage src={BgDesktop} alt="Background with a violet gray gradient" />
+
+        <BgMobileImage
+          src={BgMobile}
+          alt="Background with a violet gray gradient"
+        />
+
+        <CardFrontImage
+          src={CardFront}
+          alt="Front of a credit card with a purple gradient"
+        />
+
+        <CardBackImage
+          src={CardBack}
+          alt="Front of a credit card with a purple gradient"
+        />
 
         <FormWrapper>
           <TextInput

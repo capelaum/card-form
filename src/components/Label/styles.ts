@@ -11,4 +11,8 @@ export const LabelRoot = styled(Label.Root, {
   '&:hover': {
     cursor: 'pointer',
   },
+
+  '@bp3': {
+    fontSize: '$xs',
+  },
 })
