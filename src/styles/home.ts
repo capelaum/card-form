@@ -36,25 +36,23 @@ export const BgMobileImage = styled(Image, {
   },
 })
 
-export const CardFrontWrapper = styled('div', {
+export const CardBaseWrapper = styled('div', {
   position: 'absolute',
+  width: 460,
+  height: 252,
+  color: '$white',
+
+  backgroundSize: 'contain',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+})
+
+export const CardFrontWrapper = styled(CardBaseWrapper, {
   top: '50%',
   left: '30%',
   transform: 'translate(-70%, -100%)',
   zIndex: 1,
 
-  width: 460,
-  height: 252,
-
-  color: '$white',
-
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-
-  backgroundSize: 'contain',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
   backgroundImage: `url(${CardFront.src})`,
 
   '@media(max-width: 1200px)': {
@@ -110,16 +108,12 @@ export const CardInfo = styled('div', {
   justifyContent: 'space-between',
 })
 
-export const CardBackWrapper = styled('div', {
-  position: 'absolute',
+export const CardBackWrapper = styled(CardBaseWrapper, {
   top: '50%',
   left: '30%',
   transform: 'translate(-50%, 10%)',
 
-  color: '$white',
-
-  width: 460,
-  height: 252,
+  backgroundImage: `url(${CardBack.src})`,
 
   display: 'flex',
   justifyContent: 'flex-end',
@@ -129,11 +123,6 @@ export const CardBackWrapper = styled('div', {
     marginRight: 56,
     letterSpacing: '0.1rem',
   },
-
-  backgroundSize: 'contain',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  backgroundImage: `url(${CardBack.src})`,
 
   '@media(max-width: 1200px)': {
     transform: 'translate(-50%, -10%) scale(0.65)',
@@ -155,6 +144,7 @@ export const FormWrapper = styled('form', {
   flexDirection: 'column',
   justifyContent: 'center',
   gap: '$5',
+
   margin: '$10 $5',
   marginLeft: 350,
 
