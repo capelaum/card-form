@@ -19,7 +19,7 @@ export default function Home() {
   const [year, setYear] = useState('00')
   const [cvc, setCvc] = useState('000')
 
-  const [isSubmitted, setIsSubmitted] = useState(true)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   return (
     <>

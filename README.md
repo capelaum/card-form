@@ -4,114 +4,104 @@ This is a solution to the [Interactive card details form challenge on Frontend M
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+- [Links](#links)
+- [The challenge](#the-challenge)
+- [Technologies](#technologies)
+- [Screenshot](#screenshot)
+- [What I learned](#what-i-learned)
+- [Improvements](#improvements)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+## Links
 
-## Overview
+- [Solution URL](https://github.com/capelaum/card-form)
+- [Live Site URL](https://card-form-ebon.vercel.app)
 
-### The challenge
+## The challenge
 
 Users should be able to:
 
-- Fill in the form and see the card details update in real-time
-- Receive error messages when the form is submitted if:
-  - Any input field is empty
-  - The card number, expiry date, or CVC fields are in the wrong format
-- View the optimal layout depending on their device's screen size
-- See hover, active, and focus states for interactive elements on the page
+- [x] Fill in the form and see the card details update in real-time
+- [x] Receive error messages when the form is submitted if:
+  - [x] Any input field is empty
+  - [x] The card number, expiry date, or CVC fields are in the wrong format
+- [x] View the optimal layout depending on their device's screen size
+- [x] See hover, active, and focus states for interactive elements on the page
 
-### Screenshot
+## Technologies
 
-![](./screenshot.jpg)
+- [React.js](https://reactjs.org) - UI JS library
+- [Next.js](https://nextjs.org) - React framework
+- [Typescript](https://www.typescriptlang.org)
+- [Stitches](https://stitches.dev) - CSS in JS Styles
+- [Radix UI](https://www.radix-ui.com) - Primitive UI components
+- [React Hook Form](https://react-hook-form.com) - Form management
+- [Zod](https://zod.dev) - Form validations
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+## Screenshot
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
+![](./public/design/solution_screenshot.jpg)
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+## What I learned
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+Learned how to format and valdiate some card fields, like card number, expiration month and year, and CVC.
 
-### Links
-
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
-
-## My process
-
-### Built with
-
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
-### What I learned
-
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
+```typescript
+const formatCardNumber = (value: string) => {
+  return (
+    value
+      .replace(/\s/g, '')
+      // regular expression to match groups of four digits in the input string,
+      // and replaces each group with itself ($1) followed by a space
+      .replace(/(\d{4})/g, '$1 ')
+      // regular expression to match any characters that are not digits or whitespace
+      // and removes them from the input string
+      .replace(/[^\d\s]/g, '')
+      .trim()
+      // substring to ensure that the input string is no longer than 19 characters
+      .substring(0, 19)
+  )
 }
 ```
 
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+Learned more about styling with stitches, using absolute positions, media queries and setting background images with static image data.
+
+```typescript
+export const CardFrontWrapper = styled(CardBaseWrapper, {
+  top: '50%',
+  left: '30%',
+  transform: 'translate(-70%, -100%)',
+  zIndex: 1,
+
+  backgroundImage: `url(${CardFront.src})`,
+
+  '@media(max-width: 1200px)': {
+    transform: 'translate(-65%, -80%) scale(0.6)',
+  },
+
+  '@media(max-width: 768px)': {
+    left: '50%',
+    top: 0,
+
+    transform: 'translate(-56%, 27%) scale(0.6)',
+  },
+
+  '@media(max-width: 360px)': {
+    transform: 'translate(-54%, 22%) scale(0.6)',
+  },
+})
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+## Improvements
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+The hardest part of the challenge envolved styling, as I had to resort to absolute positioning and some transform properties, so the implementation of the responsive design could be improved in my opinion.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Website - [My Portfolio](https://www.luiscapelletto.com)
+- Frontend Mentor - [@capelaum](https://www.frontendmentor.io/profile/capelaum)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+Thank to [Agência metodo](https://agenciametodo.com) for the challenge 👌.

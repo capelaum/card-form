@@ -77,19 +77,12 @@ const createCardFormSchema = z.object({
 type CreateCardFormData = z.infer<typeof createCardFormSchema>
 
 const formatCardNumber = (value: string) => {
-  return (
-    value
-      .replace(/\s/g, '')
-      // regular expression to match groups of four digits in the input string,
-      // and replaces each group with itself ($1) followed by a space
-      .replace(/(\d{4})/g, '$1 ')
-      // regular expression to match any characters that are not digits or whitespace
-      // and removes them from the input string
-      .replace(/[^\d\s]/g, '')
-      .trim()
-      // substring to ensure that the input string is no longer than 19 characters
-      .substring(0, 19)
-  )
+  return value
+    .replace(/\s/g, '')
+    .replace(/(\d{4})/g, '$1 ')
+    .replace(/[^\d\s]/g, '')
+    .trim()
+    .substring(0, 19)
 }
 
 const formatMonthOrYear = (value: string) => {
