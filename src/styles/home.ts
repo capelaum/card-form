@@ -1,4 +1,4 @@
-import { CardFront } from '@/assets'
+import { CardBack, CardFront } from '@/assets'
 import { Text } from '@/components/Text'
 import Image from 'next/image'
 import { styled } from './stitches.config'
@@ -9,7 +9,7 @@ export const HomeWrapper = styled('main', {
   overflow: 'hidden',
   position: 'relative',
 
-  '@media(max-width: 1200px)': {
+  '@media(max-width: 768px)': {
     flexDirection: 'column',
     alignItems: 'center',
   },
@@ -21,7 +21,7 @@ export const BgImage = styled(Image, {
   minWidth: 200,
   objectFit: 'cover',
 
-  '@media(max-width: 1200px)': {
+  '@media(max-width: 768px)': {
     display: 'none',
   },
 })
@@ -30,7 +30,7 @@ export const BgMobileImage = styled(Image, {
   display: 'none',
   objectFit: 'cover',
 
-  '@media(max-width: 1200px)': {
+  '@media(max-width: 768px)': {
     display: 'block',
     width: '100%',
   },
@@ -43,12 +43,10 @@ export const CardFrontWrapper = styled('div', {
   transform: 'translate(-70%, -100%)',
   zIndex: 1,
 
-  color: '$white',
-
-  border: '1px solid red',
-
   width: 460,
   height: 252,
+
+  color: '$white',
 
   display: 'flex',
   justifyContent: 'center',
@@ -60,12 +58,16 @@ export const CardFrontWrapper = styled('div', {
   backgroundImage: `url(${CardFront.src})`,
 
   '@media(max-width: 1200px)': {
+    transform: 'translate(-65%, -80%) scale(0.65)',
+  },
+
+  '@media(max-width: 768px)': {
     left: '50%',
-    transform: 'translate(-55%, -115%) scale(0.65)',
+    transform: 'translate(-58%, -108%) scale(0.65)',
   },
 
   '@media(max-width: 360px)': {
-    transform: 'translate(-55%, -115%) scale(0.6)',
+    transform: 'translate(-56%, -115%) scale(0.6)',
   },
 })
 
@@ -81,8 +83,6 @@ export const CardContent = styled('div', {
   position: 'absolute',
   zIndex: 1,
   pading: 0,
-
-  border: '1px solid blue',
 
   width: '100%',
   height: '100%',
@@ -116,14 +116,37 @@ export const CardBackWrapper = styled('div', {
   left: '30%',
   transform: 'translate(-50%, 10%)',
 
+  color: '$white',
+
+  width: 460,
+  height: 252,
+
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+
+  span: {
+    marginRight: 56,
+    letterSpacing: '0.1rem',
+  },
+
+  backgroundSize: 'contain',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundImage: `url(${CardBack.src})`,
+
   '@media(max-width: 1200px)': {
+    transform: 'translate(-50%, -10%) scale(0.65)',
+  },
+
+  '@media(max-width: 768px)': {
     left: '50%',
     top: 40,
     transform: 'translate(-45%, -20%) scale(0.65)',
   },
 
   '@media(max-width: 360px)': {
-    transform: 'translate(-45%, -20%) scale(0.6)',
+    transform: 'translate(-44%, -25%) scale(0.6)',
   },
 })
 
@@ -133,7 +156,7 @@ export const FormWrapper = styled('form', {
   justifyContent: 'center',
   gap: '$5',
   margin: '$10 $5',
-  marginLeft: 320,
+  marginLeft: 350,
 
   maxWidth: 450,
 
@@ -142,9 +165,21 @@ export const FormWrapper = styled('form', {
   },
 
   '@media(max-width: 1200px)': {
+    marginLeft: 250,
+  },
+
+  '@media(max-width: 800px)': {
+    marginLeft: 200,
+  },
+
+  '@media(max-width: 768px)': {
     margin: 0,
     padding: '$8 $5',
     marginTop: 48,
+  },
+
+  '@media(max-width: 360px)': {
+    padding: '$8 $2',
   },
 })
 

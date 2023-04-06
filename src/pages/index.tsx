@@ -1,4 +1,4 @@
-import { BgDesktop, BgMobile, CardBack, CardLogo } from '@/assets'
+import { BgDesktop, BgMobile, CardLogo } from '@/assets'
 import { Button } from '@/components/Button'
 import { Label } from '@/components/Label'
 import { Text } from '@/components/Text'
@@ -20,7 +20,6 @@ import {
   HomeWrapper,
 } from '@/styles/home'
 import Head from 'next/head'
-import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -44,18 +43,15 @@ export default function Home() {
               <CardNumber size="3xl">0000 0000 0000 0000</CardNumber>
 
               <CardInfo>
-                <Text size="lg">Jane Appleseed</Text>
-                <Text size="lg">00/00</Text>
+                <Text size="md">Jane Appleseed</Text>
+                <Text size="md">00/00</Text>
               </CardInfo>
             </CardDetails>
           </CardContent>
         </CardFrontWrapper>
 
         <CardBackWrapper>
-          <Image
-            src={CardBack}
-            alt="Front of a credit card with a purple gradient"
-          />
+          <Text size="md">000</Text>
         </CardBackWrapper>
 
         <FormWrapper>
