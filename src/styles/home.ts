@@ -106,6 +106,18 @@ export const CardInfo = styled('div', {
   width: '100%',
   display: 'flex',
   justifyContent: 'space-between',
+  gap: '$5',
+
+  span: {
+    letterSpacing: '0.15rem',
+  },
+})
+
+export const CardholderName = styled(Text, {
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+  maxWidth: '90%',
 })
 
 export const CardBackWrapper = styled(CardBaseWrapper, {

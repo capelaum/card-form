@@ -13,6 +13,7 @@ import {
   CardInfo,
   CardLogoImage,
   CardNumber,
+  CardholderName,
   DateField,
   DateInputs,
   FormRow,
@@ -21,6 +22,7 @@ import {
 } from '@/styles/home'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Head from 'next/head'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -118,10 +120,16 @@ const formatCvc = (value: string) => {
 }
 
 export default function Home() {
+  const [cardNumber, setCardNumber] = useState('0000 0000 0000 0000')
+  const [cardholderName, setCardholderName] = useState('Jane Appleseed')
+  const [month, setMonth] = useState('00')
+  const [year, setYear] = useState('00')
+  const [cvc, setCvc] = useState('000')
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<CreateCardFormData>({
     resolver: zodResolver(createCardFormSchema),
   })
@@ -148,18 +156,24 @@ export default function Home() {
             <CardLogoImage src={CardLogo} alt="Card Logo" />
 
             <CardDetails>
-              <CardNumber size="3xl">0000 0000 0000 0000</CardNumber>
+              <CardNumber size="3xl">
+                {cardNumber.replace(/(\d{4})/g, '$1 ')}
+              </CardNumber>
 
               <CardInfo>
-                <Text size="md">Jane Appleseed</Text>
-                <Text size="md">00/00</Text>
+                <CardholderName size="md">
+                  {cardholderName.toUpperCase()}
+                </CardholderName>
+                <Text size="md">
+                  {month}/{year}
+                </Text>
               </CardInfo>
             </CardDetails>
           </CardContent>
         </CardFrontWrapper>
 
         <CardBackWrapper>
-          <Text size="md">000</Text>
+          <Text size="md">{cvc}</Text>
         </CardBackWrapper>
 
         <FormWrapper onSubmit={handleSubmit(createCard)}>
@@ -169,6 +183,10 @@ export default function Home() {
             placeholder="e.g. Jane Appleseed"
             {...register('name')}
             errorMessage={errors.name?.message}
+            onChange={(e) => {
+              const { value } = e.target
+              setCardholderName(value === '' ? 'Jane Appleseed' : value)
+            }}
           />
 
           <TextInput
@@ -182,6 +200,9 @@ export default function Home() {
             onChange={(e) => {
               const { value } = e.target
               e.target.value = formatCardNumber(value)
+              setCardNumber(
+                e.target.value === '' ? '0000 0000 0000 0000' : e.target.value
+              )
             }}
           />
 
@@ -197,6 +218,7 @@ export default function Home() {
                   onChange={(e) => {
                     const { value } = e.target
                     e.target.value = formatMonthOrYear(value)
+                    setMonth(e.target.value === '' ? '00' : e.target.value)
                   }}
                 />
                 <TextInput
@@ -207,6 +229,7 @@ export default function Home() {
                   onChange={(e) => {
                     const { value } = e.target
                     e.target.value = formatMonthOrYear(value)
+                    setYear(e.target.value === '' ? '00' : e.target.value)
                   }}
                 />
               </DateInputs>
@@ -221,11 +244,14 @@ export default function Home() {
               onChange={(e) => {
                 const { value } = e.target
                 e.target.value = formatCvc(value)
+                setCvc(e.target.value === '' ? '000' : e.target.value)
               }}
             />
           </FormRow>
 
-          <Button type="submit">Confirm</Button>
+          <Button type="submit" disabled={isSubmitting}>
+            Confirm
+          </Button>
         </FormWrapper>
       </HomeWrapper>
     </>
