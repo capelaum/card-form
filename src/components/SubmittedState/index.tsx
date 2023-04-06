@@ -7,9 +7,18 @@ import { SubmitMessage, SubmittedWrapper } from './styles'
 
 interface SubmittedStateProps {
   setIsSubmitted: Dispatch<SetStateAction<boolean>>
+  resetCardData: () => void
 }
 
-export function SubmittedState({ setIsSubmitted }: SubmittedStateProps) {
+export function SubmittedState({
+  setIsSubmitted,
+  resetCardData,
+}: SubmittedStateProps) {
+  function handleContinue() {
+    setIsSubmitted(false)
+    resetCardData()
+  }
+
   return (
     <SubmittedWrapper as="div">
       <Image
@@ -25,7 +34,7 @@ export function SubmittedState({ setIsSubmitted }: SubmittedStateProps) {
         <Text>We&apos;ve added your card details</Text>
       </SubmitMessage>
 
-      <Button onClick={() => setIsSubmitted(false)}>Continue</Button>
+      <Button onClick={handleContinue}>Continue</Button>
     </SubmittedWrapper>
   )
 }

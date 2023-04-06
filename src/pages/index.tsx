@@ -21,6 +21,14 @@ export default function Home() {
 
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  function resetCardData() {
+    setCardholderName('Jane Appleseed')
+    setCardNumber('0000 0000 0000 0000')
+    setMonth('00')
+    setYear('00')
+    setCvc('000')
+  }
+
   return (
     <>
       <Head>
@@ -51,7 +59,10 @@ export default function Home() {
         </CardBackWrapper>
 
         {isSubmitted ? (
-          <SubmittedState setIsSubmitted={setIsSubmitted} />
+          <SubmittedState
+            setIsSubmitted={setIsSubmitted}
+            resetCardData={resetCardData}
+          />
         ) : (
           <CardForm
             setCardNumber={setCardNumber}

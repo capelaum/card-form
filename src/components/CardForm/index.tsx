@@ -112,16 +112,26 @@ export function CardForm({
 }: CardFormProps) {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<CreateCardFormData>({
     resolver: zodResolver(createCardFormSchema),
   })
 
+  function resetForm() {
+    reset()
+    setCardholderName('Jane Appleseed')
+    setCardNumber('0000 0000 0000 0000')
+    setMonth('00')
+    setYear('00')
+    setCvc('000')
+  }
+
   function createCard(data: CreateCardFormData) {
     console.log(data)
-
     setIsSubmitted(true)
+    reset()
   }
 
   function handleCardholderNameChange(e: ChangeEvent<HTMLInputElement>) {
