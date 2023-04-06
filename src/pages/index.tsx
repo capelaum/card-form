@@ -1,6 +1,7 @@
 import { BgDesktop, BgMobile } from '@/assets'
 import { CardForm } from '@/components/CardForm'
 import { CardFront } from '@/components/CardFront'
+import { SubmittedState } from '@/components/SubmittedState'
 import { Text } from '@/components/Text'
 import {
   BgImage,
@@ -17,6 +18,8 @@ export default function Home() {
   const [month, setMonth] = useState('00')
   const [year, setYear] = useState('00')
   const [cvc, setCvc] = useState('000')
+
+  const [isSubmitted, setIsSubmitted] = useState(true)
 
   return (
     <>
@@ -47,13 +50,18 @@ export default function Home() {
           <Text size="md">{cvc}</Text>
         </CardBackWrapper>
 
-        <CardForm
-          setCardNumber={setCardNumber}
-          setCardholderName={setCardholderName}
-          setCvc={setCvc}
-          setMonth={setMonth}
-          setYear={setYear}
-        />
+        {isSubmitted ? (
+          <SubmittedState setIsSubmitted={setIsSubmitted} />
+        ) : (
+          <CardForm
+            setCardNumber={setCardNumber}
+            setCardholderName={setCardholderName}
+            setCvc={setCvc}
+            setMonth={setMonth}
+            setYear={setYear}
+            setIsSubmitted={setIsSubmitted}
+          />
+        )}
       </HomeWrapper>
     </>
   )

@@ -106,6 +106,7 @@ interface CardFormProps {
   setMonth: Dispatch<SetStateAction<string>>
   setYear: Dispatch<SetStateAction<string>>
   setCvc: Dispatch<SetStateAction<string>>
+  setIsSubmitted: Dispatch<SetStateAction<boolean>>
 }
 
 export function CardForm({
@@ -114,6 +115,7 @@ export function CardForm({
   setMonth,
   setYear,
   setCvc,
+  setIsSubmitted,
 }: CardFormProps) {
   const {
     register,
@@ -125,6 +127,8 @@ export function CardForm({
 
   function createCard(data: CreateCardFormData) {
     console.log(data)
+
+    setIsSubmitted(true)
   }
 
   function handleCardholderNameChange(e: ChangeEvent<HTMLInputElement>) {
