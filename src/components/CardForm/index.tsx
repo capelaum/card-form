@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { Button } from '../Button'
 import { Label } from '../Label'
 import { TextInput } from '../TextInput'
-import { DateField, DateInputs, FormRow, FormWrapper } from './styles'
+import { CardFormWrapper, DateField, DateInputs, FormRow } from './styles'
 
 const createCardFormSchema = z.object({
   name: z
@@ -158,7 +158,7 @@ export function CardForm({
   }
 
   return (
-    <FormWrapper onSubmit={handleSubmit(createCard)}>
+    <CardFormWrapper onSubmit={handleSubmit(createCard)}>
       <TextInput
         label="Cardholder Name"
         id="name"
@@ -213,6 +213,6 @@ export function CardForm({
       <Button type="submit" disabled={isSubmitting}>
         Confirm
       </Button>
-    </FormWrapper>
+    </CardFormWrapper>
   )
 }

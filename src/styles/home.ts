@@ -11,6 +11,7 @@ export const HomeWrapper = styled('main', {
   '@media(max-width: 768px)': {
     flexDirection: 'column',
     alignItems: 'center',
+    minHeight: '100vh',
   },
 })
 
@@ -68,11 +69,45 @@ export const CardBackWrapper = styled(CardBaseWrapper, {
 
   '@media(max-width: 768px)': {
     left: '50%',
-    top: 40,
-    transform: 'translate(-45%, -20%) scale(0.65)',
+    top: 32,
+    transform: 'translate(-44%, -20%) scale(0.6)',
   },
 
   '@media(max-width: 360px)': {
-    transform: 'translate(-44%, -25%) scale(0.6)',
+    transform: 'translate(-46%, -25%) scale(0.6)',
+  },
+})
+
+export const FormWrapper = styled('form', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+
+  margin: '$10 $5',
+  marginLeft: 350,
+
+  width: '100%',
+  maxWidth: 450,
+
+  button: {
+    marginTop: '$3',
+  },
+
+  '@media(max-width: 1200px)': {
+    marginLeft: 250,
+  },
+
+  '@media(max-width: 800px)': {
+    marginLeft: 200,
+  },
+
+  '@media(max-width: 768px)': {
+    margin: 0,
+    padding: '$8 $5',
+    marginTop: 40,
+  },
+
+  '@media(max-width: 360px)': {
+    padding: '$8 $2',
   },
 })

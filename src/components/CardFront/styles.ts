@@ -12,16 +12,18 @@ export const CardFrontWrapper = styled(CardBaseWrapper, {
   backgroundImage: `url(${CardFront.src})`,
 
   '@media(max-width: 1200px)': {
-    transform: 'translate(-65%, -80%) scale(0.65)',
+    transform: 'translate(-65%, -80%) scale(0.6)',
   },
 
   '@media(max-width: 768px)': {
     left: '50%',
-    transform: 'translate(-58%, -108%) scale(0.65)',
+    top: 0,
+
+    transform: 'translate(-56%, 27%) scale(0.6)',
   },
 
   '@media(max-width: 360px)': {
-    transform: 'translate(-56%, -115%) scale(0.6)',
+    transform: 'translate(-54%, 22%) scale(0.6)',
   },
 })
 

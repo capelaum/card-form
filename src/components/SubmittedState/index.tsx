@@ -11,7 +11,7 @@ interface SubmittedStateProps {
 
 export function SubmittedState({ setIsSubmitted }: SubmittedStateProps) {
   return (
-    <SubmittedWrapper>
+    <SubmittedWrapper as="div">
       <Image
         src={IconComplete}
         alt="White check icon with a violet gray gradient background"
