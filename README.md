@@ -16,7 +16,7 @@ This is a solution to the [Interactive card details form challenge on Frontend M
 ## Links
 
 - [Solution URL](https://github.com/capelaum/card-form)
-- [Live Site URL](https://card-form-ebon.vercel.app)
+- [Live Site URL](https://card-form-capelaum.vercel.app)
 
 ## The challenge
 
